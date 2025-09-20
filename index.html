@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="description" content="">
+<meta name="keywords" content="GS-RoadPatching, Gaussian Splatting, Driving Scenes, Inpainting">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>GS-RoadPatching: Inpainting Gaussians via 3D Searching and Placing for Driving Scenes</title>
+
+<link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro" rel="stylesheet">
+<link rel="stylesheet" href="./static/css/bulma.min.css">
+<link rel="stylesheet" href="./static/css/bulma-carousel.min.css">
+<link rel="stylesheet" href="./static/css/bulma-slider.min.css">
+<link rel="stylesheet" href="./static/css/fontawesome.all.min.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+<link rel="stylesheet" href="./static/css/index.css">
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script defer src="./static/js/fontawesome.all.min.js"></script>
+<script src="./static/js/bulma-carousel.min.js"></script>
+<script src="./static/js/bulma-slider.min.js"></script>
+<script src="./static/js/index.js"></script>
+</head>
+
+<body>
+
+<!-- Navigation Bar -->
+<!-- <nav class="navbar" role="navigation" aria-label="main navigation">
+  <div class="navbar-brand">
+    <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false">
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+    </a>
+  </div>
+  <div class="navbar-menu">
+    <div class="navbar-start" style="flex-grow: 1; justify-content: center;">
+      <a class="navbar-item" href="https://github.com/YOUR_USERNAME">
+        <span class="icon">
+          <i class="fas fa-home"></i>
+        </span>
+      </a>
+      <div class="navbar-item has-dropdown is-hoverable">
+        <a class="navbar-link">
+          More Research
+        </a>
+        <div class="navbar-dropdown"> -->
+          <!-- Add your other research links here -->
+          <!-- <a class="navbar-item" href="#">
+            Other Project 1
+          </a>
+          <a class="navbar-item" href="#">
+            Other Project 2
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</nav> -->
+
+<!-- Hero Section with Title and Authors -->
+<section class="hero">
+  <div class="hero-body">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered">
+        <div class="column has-text-centered">
+          <h1 class="title is-1 publication-title">
+            <span class="dnerf">GS-RoadPatching: Inpainting Gaussians via <br /> 3D Searching and Placing for Driving Scenes</span>
+          </h1>
+          
+          <!-- Conference Name -->
+          <div class="title is-3">
+            <strong>SIGGRAPH Asia 2025 Conference</strong>
+          </div>
+
+          <!-- Authors -->
+          <div class="is-size-5 publication-authors">
+            <span class="author-block">
+              <a href="#">Guo Chen</a><sup>1</sup>,
+            </span>
+            <span class="author-block">
+              <a href="#">Jiarun Liu</a><sup>2,3</sup>,
+            </span>
+            <span class="author-block">
+              <a href="#">Sicong Du</a><sup>2</sup>,
+            </span>
+            <span class="author-block">
+              <a href="#">Chenming Wu</a><sup>4</sup>,
+            </span>
+            <br>
+            <span class="author-block">
+              <a href="#">Deqi Li</a><sup>1</sup>,
+            </span>
+            <span class="author-block">
+              <a href="#">Shi-Sheng Huang</a><sup>1†</sup>,
+            </span>
+            <span class="author-block">
+              <a href="#">Guofeng Zhang</a><sup>3</sup>,
+            </span>
+            <span class="author-block">
+              <a href="#">Sheng Yang</a><sup>2†</sup>
+            </span>
+          </div>
+
+          <!-- Institutions -->
+          <div class="is-size-5 publication-authors">
+            <span class="author-block"><sup>1</sup>Beijing Normal University &nbsp&nbsp</span>
+            <span class="author-block"><sup>2</sup>Unmanned Vehicle Dept., Cainiao, Alibaba &nbsp&nbsp</span>
+            <br>
+            <span class="author-block"><sup>3</sup>State Key Lab of CAD&CG, Zhejiang University &nbsp&nbsp</span>
+            <span class="author-block"><sup>4</sup>Baidu</span>
+            <br>
+            <sup>†</sup> Corresponding authors
+            <p><br></p>
+          </div>
+
+          <!-- Publication Links (Coming Soon) -->
+          <div class="column has-text-centered">
+            <div class="publication-links">
+              <!-- Paper Link - Coming Soon -->
+              <span class="link-block">
+                <a href="#" 
+                   class="external-link button is-normal is-rounded is-dark"
+                   style="pointer-events: none; opacity: 0.6;">
+                  <span class="icon">
+                    <i class="ai ai-arxiv"></i>
+                  </span>
+                  <span>Paper (Coming Soon)</span>
+                </a>
+              </span>
+              
+              <!-- Code Link - Coming Soon -->
+              <span class="link-block">
+                <a href="#"
+                   class="external-link button is-normal is-rounded is-dark"
+                   style="pointer-events: none; opacity: 0.6;">
+                  <span class="icon">
+                    <i class="fab fa-github"></i>
+                  </span>
+                  <span>Code (Coming Soon)</span>
+                </a>
+              </span>
+              
+              <!-- Video Link - Coming Soon -->
+              <!-- <span class="link-block">
+                <a href="#" 
+                   class="external-link button is-normal is-rounded is-dark"
+                   style="pointer-events: none; opacity: 0.6;">
+                  <span class="icon">
+                    <i class="fab fa-youtube"></i>
+                  </span>
+                  <span>Video (Coming Soon)</span>
+                </a>
+              </span> -->
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Teaser Section -->
+<section class="hero teaser">
+  <div class="container is-max-desktop">
+    <div class="hero-body">
+      <h1 class="subsubtitle has-text-centered"> </h1>
+      <div class="columns is-1 is-multiline is-mobile">
+        <div class="column pb-0 mb-0 is-full">
+          <!-- Replace with your teaser image -->
+          <img src="static/images/teaser.png" width="100%">
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Abstract and Pipeline Section -->
+<section class="section">
+  <div class="container is-max-desktop">
+    
+    <!-- Abstract -->
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">Abstract</h2>
+        <div class="content has-text-justified">
+          <p>
+            <!-- Add your abstract here -->
+            This paper presents GS-RoadPatching, an inpainting method for driving scene completion by referring to completely reconstructed regions, which are represented by 3D Gaussian Splatting (3DGS). Unlike existing 3DGS inpainting methods that perform generative completion relying on 2D perspective-view-based diffusion or GAN models to predict limited appearance or depth cues for missing regions, our approach enables substitutional scene inpainting and editing directly through the 3DGS modality, extricating it from requiring spatial-temporal consistency of 2D cross-modals and eliminating the need for time-intensive retraining of Gaussians. Our key insight is that the highly repetitive patterns in driving scenes often share multi-modal similarities within the implicit 3DGS feature space and are particularly suitable for structural matching to enable effective 3DGS-based substitutional inpainting. Practically, we construct feature-embedded 3DGS scenes to incorporate a patch measurement method for abstracting local context at different scales and, subsequently, propose a structural search method to find candidate patches in 3D space effectively. Finally, we propose a simple yet effective substitution-and-fusion optimization for better visual harmony. We conduct extensive experiments on multiple publicly available datasets to demonstrate the effectiveness and efficiency of our proposed method in driving scenes, and the results validate that our method achieves state-of-the-art performance compared to the baseline methods in terms of both quality and interoperability. Additional experiments in general scenes also demonstrate the applicability of the proposed 3D inpainting strategy.
+            <br><br>
+            <!-- Add more details about your method, contributions, and results -->
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Pipeline -->
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">Pipeline</h2>
+      </div>
+    </div>
+    
+    <!-- Pipeline Image -->
+    <img src="static/images/pipeline.png" alt="GS-RoadPatching pipeline diagram">
+    
+    <!-- Pipeline Description -->
+    <p style="margin-top: 20px;">
+      <!-- Add your pipeline description here -->
+        Our method follows a four-stage pipeline: 
+        (a) automatic localization and segmentation of incomplete regions requiring inpainting; 
+        (b) 3D search and similarity measurement to identify optimal Gaussian candidates; 
+        (c) seamless pasting and fusion of selected primitives into target regions; 
+        (d) scalable editing through our proposed patch-anchor indexing mechanism for efficient region-based operations.
+    </p>
+  </div>
+</section>
+
+<!-- BibTeX Section -->
+<section class="section" id="BibTeX">
+  <div class="container is-max-desktop content">
+    <h2 class="title">BibTeX</h2>
+    <pre><code>@inproceedings{chen2025gsroadpatching,
+  title={GS-RoadPatching: Inpainting Gaussians via 3D Searching and Placing for Driving Scenes},
+  author={Guo Chen and Jiarun Liu and Sicong Du and Chenming Wu and Deqi Li and Shi-Sheng Huang and Guofeng Zhang and Sheng Yang},
+  booktitle={SIGGRAPH Asia 2025 Conference Papers},
+  year={2025}
+}</code></pre>
+  </div>
+</section>
+
+<!-- Footer -->
+<footer class="footer">
+  <div class="container">
+    <div class="columns is-centered">
+      <div class="column is-8">
+        <div class="content">
+          <p>
+            The website template was borrowed from <a href="https://github.com/nerfies/nerfies.github.io">Nerfies</a>.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
